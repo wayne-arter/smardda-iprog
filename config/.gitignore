@@ -1,0 +1,14 @@
+*
+!.gitignore
+!config_gfortran_dbg.inc
+!config_gfortran.inc
+!config_gfortranmpi_dbg.inc
+!config_gfortranmpi.inc
+!config_gfortran_pg.inc
+!config_intel_dbg.inc
+!config_intel.inc
+!config_intelmpi_dbg.inc
+!config_intelmpi.inc
+!config_intel_old.inc
+!config_intel_pg.inc
+!config.inc

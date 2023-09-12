@@ -1,0 +1,7 @@
+*
+!.gitignore
+!Makefile.hedcodlib
+!Makefile.hedplus
+!Makefile.midcodlib
+!Makefile.midplus
+!makemakecod.bash

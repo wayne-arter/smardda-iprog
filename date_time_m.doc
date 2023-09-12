@@ -1,0 +1,21 @@
+!>
+!!
+!! Date and time in different formats
+!!
+!! \Bold{Type}
+!!
+!! Infrastructure;  Object oriented module.
+!!
+!! \Bold{Purpose}
+!!
+!! Provides a type containing variables for a short and long version of the
+!! date and time and the subroutines to fill them.  The long type is
+!! intended for anotating output files and the short type for generating unique
+!! temporary file names.
+!!
+!! \Bold{Function}
+!!
+!! The module provides the routines \Tt{date_time_init} to initialise a
+!! \Tt{date_time_t} type using the intrinsic date_and_time function and
+!! \Tt{date_time_delete} to destroy the structure after use.
+!<

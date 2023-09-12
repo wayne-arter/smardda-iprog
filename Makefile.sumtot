@@ -1,0 +1,119 @@
+# basic Makefile for independent use
+
+# config file.
+include ./config/config.inc
+ 
+# Libraries
+LIBS = ./LIB/libsmarddabit$(DBG).a
+
+SOURCES = \
+const_kind_m.f90 \
+const_numphys_h.f90 \
+date_time_m.f90 \
+log_h.f90 \
+log_m.f90 \
+clock_m.f90 \
+gfile_m.f90 \
+vfile_m.f90 \
+misc_m.f90 \
+icontrol_h.f90 \
+icontrol_m.f90 \
+sum_h.f90 \
+sum_m.f90 \
+sumtot_h.f90 \
+sumtot_m.f90 \
+smitermpi_h.f90 \
+sumtot.f90
+ 
+PROG = sumtot
+
+MODULES=$(SOURCES:.f90=.mod)
+
+OBJECTS=$(SOURCES:.f90=.o)
+
+
+$(PROG): $(OBJECTS) $(LIBS)
+	$(F90) $(F90FLAGS) -o $(PROG) $(OBJECTS)  $(LIBS)
+
+$(LIBS) :
+	cd ./LIB && $(MAKE)
+
+$(OBJECTS):$(MODULES)
+	@touch .TOUCHFILE
+
+$(MODULES): %.mod : %.f90
+	$(F90) $(F90FLAGS) -c $<
+
+clean:
+	rm -f $(OBJECTS) *$(MOD) $(EXTRA_CLEAN_FILES)
+
+distclean: clean
+	rm -f $(PROG) 
+
+txt:
+	cat Makefile.$(PROG) $(SOURCES) > $(PROG).txt
+
+.PHONY : clean distclean
+
+sumtot.f90 : const_kind_m.mod
+sumtot.f90 : const_numphys_h.mod
+sumtot.f90 : date_time_m.mod
+sumtot.f90 : log_h.mod
+sumtot.f90 : log_m.mod
+sumtot.f90 : clock_m.mod
+sumtot.f90 : gfile_m.mod
+sumtot.f90 : vfile_m.mod
+sumtot.f90 : misc_m.mod
+sumtot.f90 : icontrol_h.mod
+sumtot.f90 : icontrol_m.mod
+sumtot.f90 : sum_h.mod
+sumtot.f90 : sum_m.mod
+sumtot.f90 : sumtot_h.mod
+sumtot.f90 : sumtot_m.mod
+sumtot.f90 : smitermpi_h.mod
+const_numphys_h.f90 : const_kind_m.mod
+log_h.f90 : const_kind_m.mod
+log_m.f90 : const_kind_m.mod
+log_m.f90 : date_time_m.mod
+log_m.f90 : log_h.mod
+log_m.f90 : smitermpi_h.mod
+clock_m.f90 : const_kind_m.mod
+clock_m.f90 : date_time_m.mod
+clock_m.f90 : log_m.mod
+gfile_m.f90 : const_kind_m.mod
+gfile_m.f90 : log_m.mod
+gfile_m.f90 : misc_m.mod
+gfile_m.f90 : smitermpi_h.mod
+vfile_m.f90 : const_kind_m.mod
+vfile_m.f90 : log_m.mod
+vfile_m.f90 : misc_m.mod
+vfile_m.f90 : smitermpi_h.mod
+misc_m.f90 : const_kind_m.mod
+misc_m.f90 : const_numphys_h.mod
+misc_m.f90 : log_m.mod
+icontrol_h.f90 : const_kind_m.mod
+icontrol_m.f90 : const_kind_m.mod
+icontrol_m.f90 : log_m.mod
+icontrol_m.f90 : misc_m.mod
+icontrol_m.f90 : icontrol_h.mod
+icontrol_m.f90 : sumtot_h.mod
+icontrol_m.f90 : sumtot_m.mod
+icontrol_m.f90 : sum_h.mod
+icontrol_m.f90 : sum_m.mod
+sum_h.f90 : const_kind_m.mod
+sum_m.f90 : sum_h.mod
+sum_m.f90 : log_m.mod
+sum_m.f90 : const_numphys_h.mod
+sum_m.f90 : const_kind_m.mod
+sum_m.f90 : misc_m.mod
+sumtot_h.f90 : const_kind_m.mod
+sumtot_h.f90 : sum_h.mod
+sumtot_m.f90 : sumtot_h.mod
+sumtot_m.f90 : log_m.mod
+sumtot_m.f90 : const_numphys_h.mod
+sumtot_m.f90 : const_kind_m.mod
+sumtot_m.f90 : misc_m.mod
+sumtot_m.f90 : sum_h.mod
+sumtot_m.f90 : sum_m.mod
+smitermpi_h.f90 : const_kind_m.mod
+smitermpi_h.f90 :

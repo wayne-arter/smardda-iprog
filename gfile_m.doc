@@ -1,0 +1,18 @@
+!>
+!!
+!! This module is used for gnuplot file handling.
+!!
+!! \Bold{Type}
+!!
+!! File handling; Object-oriented module.
+!!
+!! \Bold{Purpose}
+!!
+!! Used by codes \Tt{qprog}.
+!!
+!! \Bold{Function}
+!!
+!! This module is used for gnuplot file handling.
+!!
+!!
+!<

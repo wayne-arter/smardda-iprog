@@ -1,0 +1,22 @@
+&progfiles
+/
+&miscparameters
+/
+&plotselections
+  plot_gnu=T
+/
+&sumtotparameters
+  pattern_of_triangles=1
+  sumtot_formula='exp'
+  power_split=1.
+  box_vertical_size=1.
+  profile_falloff_lengthscale=1.
+  horizontal_mesh_spacing=0.25
+  vertical_mesh_spacing=0.25
+  !rotation_from_vertical=10.
+  sumtot_formula='additional'
+  number_of_integer_parameters=1
+  general_integer_parameters(1)=1
+/
+&sumparameters
+/

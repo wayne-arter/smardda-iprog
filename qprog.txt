@@ -1,0 +1,8 @@
+  real(kr8) :: lambda_q=0.1 !< profile falloff lengthscale
+  real(kr8) :: a=1 !< box horizontal size
+  real(kr8) :: b=2 !< box vertical size
+  real(kr8) :: beta=0 !< rotation from vertical
+  real(kr8) :: epsx=0.01 !< horizontal mesh displacement
+  real(kr8) :: epsy=0.01 !< vertical mesh displacement
+  real(kr8) :: hx=0.01 !< horizontal mesh spacing
+  real(kr8) :: hy=0.01 !< vertical mesh spacing

@@ -1,0 +1,29 @@
+
+MODULES=$(SOURCES:.f90=.mod)
+
+OBJECTS=$(SOURCES:.f90=.o)
+
+
+$(PROG): $(OBJECTS) $(LIBS)
+	$(F90) $(F90FLAGS) -o $(PROG) $(OBJECTS)  $(LIBS)
+
+$(LIBS) :
+	cd ./LIB && $(MAKE)
+
+$(OBJECTS):$(MODULES)
+	@touch .TOUCHFILE
+
+$(MODULES): %.mod : %.f90
+	$(F90) $(F90FLAGS) -c $<
+
+clean:
+	rm -f $(OBJECTS) *$(MOD) $(EXTRA_CLEAN_FILES)
+
+distclean: clean
+	rm -f $(PROG) 
+
+txt:
+	cat Makefile.$(PROG) $(SOURCES) > $(PROG).txt
+
+.PHONY : clean distclean
+

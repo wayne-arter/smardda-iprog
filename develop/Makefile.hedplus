@@ -1,0 +1,9 @@
+# basic Makefile for independent use
+
+# config file.
+include ./config/config.inc
+ 
+# Libraries
+LIBS = ./LIB/lib$(DBG).a
+
+SOURCES = \

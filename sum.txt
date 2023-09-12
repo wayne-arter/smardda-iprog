@@ -1,0 +1,11 @@
+  real(kr8) :: aext !< box horizontal extent
+  real(kr8) :: bext !< box vertical extent
+  integer(ki4) :: nh !< number of mesh cells in horizontal
+  integer(ki4) :: mh !< number of mesh cells in vertical
+  real(kr8) :: ah !< half box width
+  real(kr8) :: bh !< half box height
+  real(kr8) :: hxsxh !< sixth horizontal mesh spacing
+  real(kr8) :: hysxh !< sixth vertical mesh spacing
+  real(kr8) :: sumest !< estimate of integral
+  real(kr8) :: sumexact !< analytic value of integral
+

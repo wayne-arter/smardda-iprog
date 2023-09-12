@@ -1,0 +1,9 @@
+# basic Makefile
+
+# config file.
+include ../config/config.inc
+ 
+# Path and libraries
+include ../config/path.inc
+
+SOURCES = \

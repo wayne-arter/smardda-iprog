@@ -1,0 +1,12 @@
+# pattern plots, note that
+# hexpts.gnu is fort.15 file produced if uncomment !WA15 statements
+# ujpts.gnu is fort.15 file produced if uncomment !WA15 statements
+unset border
+unset xtics
+unset ytics
+set output "hex1v4.ps"
+set terminal postscript enhanced color size 7,7 linewidth 2
+unset key
+plot "plot_hex0_gnu.gnu" with lines, "hexpts.gnu" with points pt 7 ps 1
+set output "uj1v4.ps"
+plot "plot_case0_gnu.gnu" with lines, "ujpts.gnu" with points pt 7 ps 1

@@ -1,0 +1,18 @@
+!>
+!!
+!! Provide simple names for real and integer kinds.
+!!
+!! \Bold{Type}
+!!
+!! Framework and infrastructure; Object-oriented module.
+!!
+!! \Bold{Purpose}
+!!
+!! Used by codes \Tt{qprog}.
+!!
+!! \Bold{Function}
+!!
+!! Provide simple names for real and integer kinds.
+!!
+!!
+!<

@@ -1,0 +1,5 @@
+*
+!.gitignore
+!isnumb.f
+!lowor.f
+!makefile

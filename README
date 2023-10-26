@@ -79,6 +79,10 @@ Other subdirectories
 doc produce latest version of CCFE-R(15)34 from f90 files, see local README
 TEST outputs to compare specialist example .ctl and .dat files setting a .dat file as input
 
+Other repos
+smardda/develop contains codvar.bash which converts to qprog.txt from an abbreviated input that includes
+LaTeX variables, see covar_test.txt conversion to codvar_test.out
+
 
 Updating auto-generated QPROG code
 ----------------------------------
@@ -119,6 +123,6 @@ file, param and plot for sumtot, respectively progfiles, miscparameters and plot
 Thereafter, icontrol_read calls 
 (1) sumtot_readcon to read in type inumerics, check the validity of the inputs and assign to sumtot%n
 (2) sum_readcon to read in type sunumerics, check the validity of the inputs and assign to sumtot%sum%n
-A special feature of the relatively simple qprog represented by sumtotis that all the variables in the 
+A special feature of the relatively simple qprog represented by sumtot is that all the variables in the 
 sub-object of type sunumerics are set by copying their counterparts in inumerics 
 (effectively sumtot%sum%n=sumtot%n), EXCEPT for the PAMS variables and bigobj_formula.

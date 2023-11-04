@@ -1,8 +1,10 @@
-Program IPROG, quadrature for shadowed power over regular triangulations, based on
-QPROG, example Fortran 95, .doc and rubric files corresponding to CCFE-R(15)34
+Program IPROG, quadrature for shadowed power over regular triangulations,
+used in work described by TN5 constituent of UKAEA-RE(19)04 to appear at
+https://scientific-publications.ukaea.uk/reports/UKAEA-R1904.pdf (or thereabouts)
+based on QPROG, example Fortran 95, .doc and rubric files corresponding to CCFE-R(15)34
 https://scientific-publications.ukaea.uk/wp-content/uploads/CCFE-R-1534.pdf
 http://dx.doi.org/10.13140/RG.2.2.27018.41922
-QPROG repo at  git@github.com:wayne-arter/smardda-qprog.git, see QPROG README
+QPROG repo at  git@github.com:smardda/qprog.git, see QPROG README
 for further explanation, QPROG subdirectory doc for report source.
 
 IPROG skeleton produced by

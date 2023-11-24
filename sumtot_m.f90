@@ -5,6 +5,7 @@ module sumtot_m
   use const_numphys_h
   use const_kind_m
   use misc_m
+  use halton_m
   use sum_h
   use sum_m
 
@@ -251,6 +252,12 @@ subroutine sumtot_solve(self)
   case(1)
     ! hexagons
     call sum_solvehex(self%sum)
+  case(10)
+    ! random numbers
+    call sum_solverand(self%sum)
+  case(11)
+    ! quasirandom numbers
+    call sum_solveqrand(self%sum)
   end select mesh_pattern
   end do
 

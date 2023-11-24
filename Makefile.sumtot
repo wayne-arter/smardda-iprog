@@ -18,6 +18,7 @@ vfile_m.f90 \
 misc_m.f90 \
 icontrol_h.f90 \
 icontrol_m.f90 \
+halton_m.f90 \
 sum_h.f90 \
 sum_m.f90 \
 sumtot_h.f90 \
@@ -66,6 +67,7 @@ sumtot.f90 : vfile_m.mod
 sumtot.f90 : misc_m.mod
 sumtot.f90 : icontrol_h.mod
 sumtot.f90 : icontrol_m.mod
+sumtot.f90 : halton_m.mod
 sumtot.f90 : sum_h.mod
 sumtot.f90 : sum_m.mod
 sumtot.f90 : sumtot_h.mod
@@ -106,6 +108,7 @@ sum_m.f90 : log_m.mod
 sum_m.f90 : const_numphys_h.mod
 sum_m.f90 : const_kind_m.mod
 sum_m.f90 : misc_m.mod
+sum_m.f90 : halton_m.mod
 sumtot_h.f90 : const_kind_m.mod
 sumtot_h.f90 : sum_h.mod
 sumtot_m.f90 : sumtot_h.mod
@@ -113,6 +116,7 @@ sumtot_m.f90 : log_m.mod
 sumtot_m.f90 : const_numphys_h.mod
 sumtot_m.f90 : const_kind_m.mod
 sumtot_m.f90 : misc_m.mod
+sumtot_m.f90 : halton_m.mod
 sumtot_m.f90 : sum_h.mod
 sumtot_m.f90 : sum_m.mod
 smitermpi_h.f90 : const_kind_m.mod

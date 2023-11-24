@@ -5,6 +5,7 @@ module sum_m
   use const_numphys_h
   use const_kind_m
   use misc_m
+  use halton_m
 
   implicit none
   private
@@ -16,6 +17,8 @@ module sum_m
   sum_solve,  & !<  perform UJ quadrature
   sum_solvehex,  & !<  perform  quadrature on hexagons
   sum_userdefined,  & !< user-defined function
+  sum_solverand,  & !<  perform Monte-Carlo quadrature
+  sum_solveqrand,  & !<  perform Quasi-Monte-Carlo quadrature
   sum_exp,  & !< exp function
   sum_fn, &  !< general external function call
   sum_dia, &  !< object diagnostics to log file
@@ -366,6 +369,108 @@ subroutine sum_solvehex(self)
   call log_value("normalised estimate ",self%sumest)
 
 end subroutine sum_solvehex
+!---------------------------------------------------------------------
+!>  perform Monte-Carlo quadrature 
+subroutine sum_solverand(self)
+
+  !! arguments
+  type(sum_t), intent(inout) :: self !< module object
+  !! local
+  character(*), parameter :: s_name='sum_solverand' !< subroutine name
+  real(kr8), dimension(8) :: x !< local variable
+  real(kr8), dimension(8) :: y !< local variable
+  real(kr4), dimension(1)  :: zrand !< single precision random variable
+!DWA real(kr8), dimension(1)  :: drand !< double precision random variable
+  real(kr8) :: xtfm !< local variable
+  real(kr8) :: za !< local variable
+  real(kr8) :: zb !< local variable
+  integer(ki4) :: ilenv=1 !< local variable
+  integer(ki4) :: ipts !< local variable
+  logical :: linx !< local variable
+
+  za=self%n%a
+  zb=self%n%b
+  self%nh=0.5+za/self%n%hx
+  self%mh=0.5+zb/self%n%hy
+  self%sumest=0
+  ipts=0
+  do j = 1,self%mh
+     do i = 1,self%nh
+
+        call ranlux(zrand,ilenv) 
+!DWA        call halton(ilenv,drand)
+        x(1)=zrand(1)*za
+        y(1)=0.
+
+!WA15        write(15,*) x(k),y(k) !WA15
+         xtfm=x(1)
+         linx=.true.
+         if (linx) then
+            ipts=ipts+1
+            self%sumest=self%sumest+sum_fn(self,xtfm)
+!WA            write(10,*) xtfm,ytfm !WA
+!WA            write(11,*) x(k),y(k) !WA
+         end if
+     end do
+  end do
+  !! normalise
+  call log_value("displacement ",self%n%epsx)
+  call log_value("number of sample points ",ipts)
+  call log_value("unnormalised estimate ",self%sumest)
+  self%sumest=self%sumest*za*zb/(ipts)
+  call log_value("normalised estimate ",self%sumest)
+
+end subroutine sum_solverand
+!---------------------------------------------------------------------
+!>  perform Quasi-Monte-Carlo quadrature 
+subroutine sum_solveqrand(self)
+
+  !! arguments
+  type(sum_t), intent(inout) :: self !< module object
+  !! local
+  character(*), parameter :: s_name='sum_solveqrand' !< subroutine name
+  real(kr8), dimension(8) :: x !< local variable
+  real(kr8), dimension(8) :: y !< local variable
+  real(kr8), dimension(1)  :: drand !< double precision random variable
+  real(kr8) :: xtfm !< local variable
+  real(kr8) :: za !< local variable
+  real(kr8) :: zb !< local variable
+  integer(ki4) :: ilenv=1 !< local variable
+  integer(ki4) :: ipts !< local variable
+  logical :: linx !< local variable
+
+  za=self%n%a
+  zb=self%n%b
+  self%nh=0.5+za/self%n%hx
+  self%mh=0.5+zb/self%n%hy
+  self%sumest=0
+  ipts=0
+  do j = 1,self%mh
+     do i = 1,self%nh
+
+        call halton(ilenv,drand)
+        x(1)=drand(1)*za
+        y(1)=0.
+
+!WA15        write(15,*) x(k),y(k) !WA15
+         xtfm=x(1)
+         linx=.true.
+         if (linx) then
+            ipts=ipts+1
+            self%sumest=self%sumest+sum_fn(self,xtfm)
+!WA            write(10,*) xtfm,ytfm !WA
+!WA            write(11,*) x(k),y(k) !WA
+         end if
+     end do
+  end do
+  !! normalise
+  call log_value("displacement ",self%n%epsx)
+  call log_value("number of sample points ",ipts)
+  call log_value("unnormalised estimate ",self%sumest)
+  self%sumest=self%sumest*za*zb/(ipts)
+  call log_value("normalised estimate ",self%sumest)
+
+end subroutine sum_solveqrand
 !---------------------------------------------------------------------
 !> output to log file
 subroutine sum_dia(self)

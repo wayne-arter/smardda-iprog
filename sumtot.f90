@@ -11,6 +11,7 @@ program p_sumtot
   use vfile_m
   use icontrol_h
   use icontrol_m
+  use halton_m
   use sum_h
   use sum_m
   use sumtot_h

@@ -15,7 +15,7 @@ for i in $1;do head -1  $i.txt.srt;tail -n1 $i.txt.srt;done
 gnuplot << @@
 set output "$1.ps"
 set terminal postscript enhanced color linewidth 2 font "Helvetica,24"
-plot "$1.txt" using (-$1):($2) with lines notitle
+plot "$1.txt" using (-\$1):(\$2) with lines notitle
 @@
 exit
 #
@@ -41,18 +41,18 @@ exit
 gnuplot << @@
 set output "ujjspam.ps"
 set terminal postscript enhanced color linewidth 2 font "Helvetica,24"
-plot "ujj03.txt" using (-3*$1):($2) with lines title "10", "ujj04.txt" using (-1.5*$1):($2) with lines title "5", "ujj05.txt" using (-$1):($2) with lines title "3"
+plot "ujj03.txt" using (-3*\$1):(\$2) with lines title "10", "ujj04.txt" using (-1.5*\$1):(\$2) with lines title "5", "ujj05.txt" using (-\$1):(\$2) with lines title "3"
 @@
 gnuplot << ++
 set output "ujjrotm.ps"
 set terminal postscript enhanced color linewidth 2 font "Helvetica,24"
-plot "ujj08.txt" using (-$1):($2) with lines title "0.0", "ujj05.txt" using (-$1):($2) with lines title "2.5", "ujj07.txt" using (-$1):($2) with lines title "5.0", "ujj06.txt" using (-$1):($2) with lines title "7.5"
+plot "ujj08.txt" using (-\$1):(\$2) with lines title "0.0", "ujj05.txt" using (-\$1):(\$2) with lines title "2.5", "ujj07.txt" using (-\$1):(\$2) with lines title "5.0", "ujj06.txt" using (-\$1):(\$2) with lines title "7.5"
 ++
 gnuplot << --
 set xrange [-0.005:0.0075]
 set output "hexrotm.ps"
 set terminal postscript enhanced color linewidth 2 font "Helvetica,24"
-plot "hfplo.txt" using (-$1):($2) with lines title "0.0", "hiplo.txt" using (-$1):($2) with lines title "0.1", "hjplo.txt" using (-$1):($2) with lines title "0.25", \
+plot "hfplo.txt" using (-\$1):(\$2) with lines title "0.0", "hiplo.txt" using (-\$1):(\$2) with lines title "0.1", "hjplo.txt" using (-\$1):(\$2) with lines title "0.25", \
 "hhplo.txt" using (-$1):($2) with lines title "1.0", "hgplo.txt" using (-$1):($2) with lines title "5.0", \
  "hlplo.txt" using (-$1):($2) with lines title "15.0", "hkplo.txt" using (-$1):($2) with lines title "30.0"
 --

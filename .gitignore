@@ -1,4 +1,5 @@
 *
 !.gitignore
 !OUT
+!LIB
 !halton_m.f90

@@ -1,4 +1,5 @@
 1,/displacement/-1d
+$
 g/number of quadrature points/.,+1d
 /estimate of integral/,$d
 g/normalised estimate/s/.*=//
